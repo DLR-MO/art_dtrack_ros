@@ -10,7 +10,7 @@ The `art_dtrack_tf` node receives the UDP packages and broadcasts named transfor
 |Name|Type|Description|Example|
 |-|-|-|-|
 |**Required**|
-|**`ip`**|`string`|The IP of the tracking system. |`192.168.0.53`|
+|**`ip`**|`string`|The IP address of the tracking system. |`192.168.0.53`|
 |**`bodies`**|`string`|The list of tf names used for broadcasting. Should match the order of calibrated bodies in the ART DTRACK software. |`['pen', 'antlers']`|
 |Optional|
 |`frame`|`string`|The tracked body frames are broadcasted relative to this frame. |`base_track`|
@@ -20,7 +20,7 @@ The `art_dtrack_tf` node receives the UDP packages and broadcasts named transfor
 
 Run the node directly with the command 
 ```bash
-ros2 run art_dtrack_ros art_dtrack_tf --ros-args -p ip:="XXX.XXX.XXX.XXX" -p bodies:="['mybody1', 'antler', 'pen']" # -p frame:="world"
+ros2 run art_dtrack_ros art_dtrack_tf --ros-args -p ip:="XXX.XXX.XXX.XXX" -p bodies:="['mybody1', 'antlers', 'pen']" # -p frame:="world"
 
 ```
 
