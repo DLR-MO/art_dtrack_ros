@@ -26,7 +26,7 @@ ros2 run art_dtrack_ros art_dtrack_tf --ros-args -p ip:="XXX.XXX.XXX.XXX" -p bod
 
 ## Run with python
 
-Use the `/art_dtrack` directory in your project directly to receive UDP messages. You can either copy them over or create a symlink to the directory. This minimal example shows how you can use the `ArtDtrackReceiver`: 
+Use the `/art_dtrack` directory in your project directly to receive UDP messages. You can either copy it over or create a symlink to the directory. This minimal example shows how you can use the `ArtDtrackReceiver`: 
 
 ```python
 from art_dtrack.art_dtrack_receiver import ArtDtrackReceiver, DtrackBody
