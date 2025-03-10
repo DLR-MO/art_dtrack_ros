@@ -27,12 +27,14 @@ class ArtDtrackTfPublisher(Node):
             'port', 4100).get_parameter_value().integer_value
         self.buffer_size = self.declare_parameter(
             'buffer_size', 1024).get_parameter_value().integer_value
+        self.con_timeout = self.declare_parameter(
+            'timeout', 3.0).get_parameter_value().double_value
         self.frame = self.declare_parameter(
             'frame', 'base_track').get_parameter_value().string_value
         self.bodies = self.declare_parameter(
             'bodies', ['body_1']).get_parameter_value().string_array_value
         self.tf_broadcaster = TransformBroadcaster(self)
-        self.receiver = ArtDtrackReceiver(self.ip, self.port)
+        self.receiver = ArtDtrackReceiver(ip=self.ip, port=self.port, con_timeout=self.con_timeout)
     
     def start(self):
         while rclpy.ok():
@@ -53,7 +55,7 @@ class ArtDtrackTfPublisher(Node):
         t.transform.translation.y = body.y / 1000
         t.transform.translation.z = body.z / 1000
         # swap y and z
-        body.rot[1], body.rot[2] = [body.rot[2], body.rot[1]]
+        # body.rot[1], body.rot[2] = [body.rot[2], body.rot[1]]
         quaternion_wxyz = mat2quat(body.rot)
         t.transform.rotation.w = quaternion_wxyz[0]
         t.transform.rotation.x = quaternion_wxyz[1]
