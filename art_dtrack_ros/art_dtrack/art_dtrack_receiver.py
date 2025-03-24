@@ -1,5 +1,5 @@
 import socket
-from .art_dtrack_parser import DtrackMessage, parseDtrackLine, DtrackBody
+from .art_dtrack_parser import DtrackMessage, parseDtrackLine, DtrackBody, DtrackMeasurementTool, DtrackMeasurementToolReference
 
 class ArtDtrackReceiver:
     """ Configures the socket to receive messages. """
@@ -17,6 +17,12 @@ class ArtDtrackReceiver:
             self.socket.bind((self.ip, self.port))
             self.socket_initialized = True
         udp_data, _ = self.socket.recvfrom(buffer_size)
+        ############ log UDP data
+        # import logging
+        # logger = logging.getLogger(__name__)
+        # logging.basicConfig(filename='trackinglog.log', encoding='utf-8', level=logging.DEBUG, format='%(message)s')
+        # logger.info(udp_data.decode())
+        ############
         return parseDtrackLine(udp_data.decode())
 
         
