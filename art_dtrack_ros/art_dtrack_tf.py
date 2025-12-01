@@ -1,4 +1,5 @@
 from math import floor
+from datetime import datetime
 import socket
 import threading
 import time
@@ -26,6 +27,7 @@ class ArtDtrackTfPublisher(Node):
     def __init__(self):
         """Initialize the MarkerbasedTracking node."""
         super().__init__("markerbased_tracking")
+        self.utc_offset_seconds = datetime.now().astimezone().utcoffset().seconds
         self.ip = (
             self.declare_parameter("ip", "192.168.0.53")
             .get_parameter_value()
@@ -74,15 +76,15 @@ class ArtDtrackTfPublisher(Node):
                 # print(msg)
                 for body in msg.bodies:
                     if body.id >= 0 and body.id < len(self.bodies):
-                        self.body2tf(body, msg.timestamp_full)
+                        self.body2tf(body, msg.timestamp_full + self.utc_offset_seconds)
                 for body in msg.measurement_tools:
                     if body.id >= 0 and body.id < len(self.measurement_tools):
-                        self.mt2tf(body, msg.timestamp_full)
+                        self.mt2tf(body, msg.timestamp_full + self.utc_offset_seconds)
                 for body in msg.measurement_tool_reference_bodies:
                     if body.id >= 0 and body.id < len(
                         self.measurement_tool_reference_bodies
                     ):
-                        self.mtr2tf(body, msg.timestamp_full)
+                        self.mtr2tf(body, msg.timestamp_full + self.utc_offset_seconds)
             except socket.error:
                 self.get_logger().warn(f"Currently no connection to the UDP receiver. Your IP is set to {self.ip}, port is {self.port}", throttle_duration_sec=1)
                 continue
