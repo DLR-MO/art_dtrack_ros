@@ -84,7 +84,7 @@ class ArtDtrackTfPublisher(Node):
                     ):
                         self.mtr2tf(body, msg.timestamp_full)
             except socket.error:
-                self.get_logger().warn("Currently no connection to the UDP receiver.")
+                self.get_logger().warn(f"Currently no connection to the UDP receiver. Your IP is set to {self.ip}, port is {self.port}", throttle_duration_sec=1)
                 continue
 
     def body2tf(self, body: DtrackBody, ts: float):
