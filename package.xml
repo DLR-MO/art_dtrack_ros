@@ -10,9 +10,9 @@ SPDX-License-Identifier: MIT
 <package format="3">
   <name>art_dtrack_ros</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="wiec_fa@todo.todo">wiec_fa</maintainer>
-  <license>TODO: License declaration</license>
+  <description>ROS 2 support for the ART DTRACK 3D tracking system</description>
+  <maintainer email="fabian.wieczorek@dlr.de">Fabian Wieczorek</maintainer>
+  <license>MIT</license>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
