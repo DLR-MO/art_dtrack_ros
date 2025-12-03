@@ -1,5 +1,12 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+
+<!--
+SPDX-FileCopyrightText: 2025 Fabian Wieczorek, German Aerospace Center (DLR)
+
+SPDX-License-Identifier: MIT
+-->
+
 <package format="3">
   <name>art_dtrack_ros</name>
   <version>0.0.0</version>

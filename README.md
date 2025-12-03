@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2025 Fabian Wieczorek, German Aerospace Center (DLR)
+
+SPDX-License-Identifier: MIT
+-->
+
 # ART DTRACK ROS2 bridge
 
 This repo connects the ART DTRACK marker based 3D tracking system with ROS2 over python.
@@ -17,7 +23,7 @@ After connection the interface might display a different time than your computer
 
 A common pitfall that we ran into was having multiple network interfaces on the machine (i.e. an extra wifi). If you encounter issues with the DTRACK not connecting to chrony, try disabling the other network interfaces that are not connected to the DTRACK controller.
 
-## Activate DTRACK 
+## Activate DTRACK
 The DTRACK controller needs to be configured to send out the data via UDP. This can be easily activated using the DTRACK interface in the `Output` menu.
 Keep the default selection of data types.\
 Naturally, it is also necessary to start the tracking afterwards.

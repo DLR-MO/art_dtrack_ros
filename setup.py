@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Fabian Wieczorek, German Aerospace Center (DLR)
+#
+# SPDX-License-Identifier: MIT
+
 from setuptools import find_packages, setup
 
 package_name = "art_dtrack_ros"

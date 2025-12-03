@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2025 Fabian Wieczorek, German Aerospace Center (DLR)
+#
+# SPDX-License-Identifier: MIT
+
 from math import floor
 from datetime import datetime
 import socket
@@ -86,7 +90,10 @@ class ArtDtrackTfPublisher(Node):
                     ):
                         self.mtr2tf(body, msg.timestamp_full + self.utc_offset_seconds)
             except socket.error:
-                self.get_logger().warn(f"Currently no connection to the UDP receiver. Your IP is set to {self.ip}, port is {self.port}", throttle_duration_sec=1)
+                self.get_logger().warn(
+                    f"Currently no connection to the UDP receiver. Your IP is set to {self.ip}, port is {self.port}",
+                    throttle_duration_sec=1,
+                )
                 continue
 
     def body2tf(self, body: DtrackBody, ts: float):
